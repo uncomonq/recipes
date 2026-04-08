@@ -1,0 +1,10 @@
+[flake8]
+exclude = migrations, .venv, __pycache__, manage.py, .vscode/, .idea/, venv
+max-line-length = 79
+extend-ignore = W503
+import-order-style = google
+application-import-names = recipes_hub
+# quotes
+inline-quotes = double
+multiline-quotes = double
+docstring-quotes = double
