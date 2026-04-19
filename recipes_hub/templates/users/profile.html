@@ -1,0 +1,27 @@
+﻿{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Profile" %}{% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container" style="max-width: 700px;">
+    {% trans "not specified" as not_specified %}
+    <h1 class="mb-4">{{ request.user.username }}</h1>
+
+    <ul class="list-group mb-4">
+      <li class="list-group-item"><strong>{% trans "Email" %}:</strong> {{ request.user.email|default:not_specified }}</li>
+      <li class="list-group-item"><strong>{% trans "First name" %}:</strong> {{ request.user.first_name|default:not_specified }}</li>
+      <li class="list-group-item"><strong>{% trans "Last name" %}:</strong> {{ request.user.last_name|default:not_specified }}</li>
+      <li class="list-group-item"><strong>{% trans "Birthday" %}:</strong> {{ profile.birthday|default:not_specified }}</li>
+    </ul>
+
+    <p><a class="btn btn-outline-secondary" href="{% url 'users:password_change' %}">{% trans "Change password" %}</a></p>
+
+    <form method="post" action="{% url 'users:logout' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-warning text-white">{% trans "Logout" %}</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

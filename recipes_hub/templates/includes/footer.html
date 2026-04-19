@@ -1,0 +1,7 @@
+﻿{% load i18n %}
+{% now "Y" as current_year %}
+<footer class="border-top bg-white mt-auto">
+  <div class="container py-4 text-center text-muted small">
+    {% blocktrans %}RecipesHub · {{ current_year }}{% endblocktrans %}
+  </div>
+</footer>

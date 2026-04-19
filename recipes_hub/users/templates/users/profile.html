@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+    <h1>{{ request.user.username }}</h1>
+    <p>Email: {{ request.user.email|default:"not specified" }}</p>
+    <p>First name: {{ request.user.first_name|default:"not specified" }}</p>
+    <p>Last name: {{ request.user.last_name|default:"not specified" }}</p>
+    <p>Birthday: {{ profile.birthday|default:"not specified" }}</p>
+    <form method="post" action="{% url 'users:logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>
