@@ -1,27 +1,51 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 {% load i18n %}
 
 {% block title %}{% trans "Profile" %}{% endblock %}
 
 {% block content %}
-<section class="py-5">
-  <div class="container" style="max-width: 700px;">
-    {% trans "not specified" as not_specified %}
-    <h1 class="mb-4">{{ request.user.username }}</h1>
+<section class="rh-page rh-profile-home">
+  <div class="container rh-shell">
+    <div class="rh-profile-home-card">
+      <div class="rh-profile-cover"></div>
 
-    <ul class="list-group mb-4">
-      <li class="list-group-item"><strong>{% trans "Email" %}:</strong> {{ request.user.email|default:not_specified }}</li>
-      <li class="list-group-item"><strong>{% trans "First name" %}:</strong> {{ request.user.first_name|default:not_specified }}</li>
-      <li class="list-group-item"><strong>{% trans "Last name" %}:</strong> {{ request.user.last_name|default:not_specified }}</li>
-      <li class="list-group-item"><strong>{% trans "Birthday" %}:</strong> {{ profile.birthday|default:not_specified }}</li>
-    </ul>
+      <div class="rh-profile-home-body">
+        <form method="post" enctype="multipart/form-data" class="rh-avatar-upload-form">
+          {% csrf_token %}
+          <label class="rh-profile-avatar-button" for="id_image">
+            {% if profile.image %}
+              <img class="rh-profile-avatar-home" src="{{ profile.image.url }}" alt="{{ request.user.username }}">
+            {% else %}
+              <span class="rh-profile-avatar-home rh-profile-avatar-home--empty">{% trans "Add photo" %}</span>
+            {% endif %}
+          </label>
+          {{ avatar_form.image.as_widget|safe }}
+        </form>
 
-    <p><a class="btn btn-outline-secondary" href="{% url 'users:password_change' %}">{% trans "Change password" %}</a></p>
-
-    <form method="post" action="{% url 'users:logout' %}">
-      {% csrf_token %}
-      <button type="submit" class="btn btn-warning text-white">{% trans "Logout" %}</button>
-    </form>
+        <div class="rh-profile-home-header">
+          <div class="rh-profile-home-intro">
+            <h1 class="rh-profile-home-name">{{ request.user.get_full_name|default:request.user.username }}</h1>
+            <p class="rh-profile-home-subtitle">@{{ request.user.username }}</p>
+          </div>
+          <a href="{% url 'users:profile_settings' %}" class="rh-settings-button" aria-label="{% trans 'Profile settings' %}">
+            <span aria-hidden="true">&#9881;</span>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+<script>
+  (function () {
+    const input = document.getElementById("id_image");
+    if (!input) return;
+    input.classList.add("rh-visually-hidden");
+    input.addEventListener("change", function () {
+      if (input.files && input.files.length) {
+        input.form.submit();
+      }
+    });
+  })();
+</script>
 {% endblock %}

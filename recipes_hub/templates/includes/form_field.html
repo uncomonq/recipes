@@ -2,7 +2,7 @@
 <div class="rh-form-field">
   <label class="rh-form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
   {{ field|add_class:"form-control" }}
-  {% if field.help_text %}
+  {% if field.help_text and field.errors %}
     <div class="rh-form-help">{{ field.help_text|safe }}</div>
   {% endif %}
   {% if field.errors %}

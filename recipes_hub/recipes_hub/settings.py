@@ -101,9 +101,12 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static_dev"]
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 LOGIN_REDIRECT_URL = "users:profile"
 LOGOUT_REDIRECT_URL = "users:login"
 LOGIN_URL = "users:login"
+AUTHENTICATION_BACKENDS = ["users.backends.EmailOrUsernameBackend"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

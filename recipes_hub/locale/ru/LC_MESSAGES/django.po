@@ -2,201 +2,263 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recipes_hub\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-19 18:56+0300\n"
-"PO-Revision-Date: 2026-04-17 00:00+0000\n"
-"Last-Translator: Team\n"
+"POT-Creation-Date: 2026-04-20 00:00+0000\n"
+"PO-Revision-Date: 2026-04-20 00:00+0000\n"
+"Last-Translator: Codex\n"
 "Language-Team: Russian\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\templates\includes\footer.html:5
-#, python-format
-msgid "RecipesHub · %(current_year)s"
-msgstr "RecipesHub · %(current_year)s"
-
-#: .\templates\includes\header.html:11 .\templates\users\profile.html:4
 msgid "Profile"
 msgstr "Профиль"
 
-#: .\templates\includes\header.html:16
-msgid "Sign out"
-msgstr "Выйти"
-
-#: .\templates\includes\header.html:21 .\templates\users\login.html:13
-#: .\templates\users\password_reset_complete.html:11
 msgid "Sign in"
 msgstr "Войти"
 
-#: .\templates\includes\header.html:24 .\templates\users\signup.html:4
 msgid "Sign up"
 msgstr "Регистрация"
 
-#: .\templates\includes\header.html:34
 msgid "Language switcher"
 msgstr "Переключатель языка"
 
-#: .\templates\includes\header.html:37
 msgid "English"
 msgstr "Английский"
 
-#: .\templates\includes\header.html:40
 msgid "Russian"
 msgstr "Русский"
 
-#: .\templates\users\logged_out.html:4
 msgid "Logged out"
 msgstr "Выход выполнен"
 
-#: .\templates\users\logged_out.html:9
+msgid "See you next time"
+msgstr "До следующего раза"
+
+msgid "You have safely logged out. Come back whenever you want to pick up where you left off."
+msgstr "Вы безопасно вышли из аккаунта. Возвращайтесь, когда захотите продолжить."
+
 msgid "You have logged out"
 msgstr "Вы вышли из аккаунта"
 
-#: .\templates\users\logged_out.html:10
+msgid "Your session is closed on this device."
+msgstr "Сессия на этом устройстве завершена."
+
 msgid "Sign in again"
 msgstr "Войти снова"
 
-#: .\templates\users\login.html:4 .\templates\users\login.html:9
-#: .\templates\users\signup.html:17
 msgid "Login"
 msgstr "Вход"
 
-#: .\templates\users\login.html:15
+msgid "Welcome back to RecipesHub"
+msgstr "С возвращением в RecipesHub"
+
+msgid "Sign in to save ingredients, revisit recipes, and keep your kitchen profile close at hand."
+msgstr "Войдите, чтобы сохранять ингредиенты, возвращаться к рецептам и держать профиль под рукой."
+
+msgid "Use your username or email and password."
+msgstr "Используйте имя пользователя или email и пароль."
+
 msgid "Forgot password?"
 msgstr "Забыли пароль?"
 
-#: .\templates\users\login.html:17
 msgid "No account yet?"
 msgstr "Еще нет аккаунта?"
 
-#: .\templates\users\login.html:18
 msgid "Create one"
 msgstr "Создать"
 
-#: .\templates\users\password_change_done.html:4
-msgid "Password changed"
-msgstr "Пароль изменен"
+msgid "Create your cooking corner"
+msgstr "Создайте свой кулинарный уголок"
 
-#: .\templates\users\password_change_done.html:9
-msgid "Password was changed"
-msgstr "Пароль был изменен"
+msgid "Build a personal profile, keep your ingredients organized, and make RecipesHub feel like your own kitchen notebook."
+msgstr "Создайте личный профиль, держите ингредиенты в порядке и превратите RecipesHub в свой кулинарный блокнот."
 
-#: .\templates\users\password_change_done.html:10
-msgid "Go to profile"
-msgstr "Перейти в профиль"
-
-#: .\templates\users\password_change_form.html:4
-#: .\templates\users\password_change_form.html:9
-#: .\templates\users\profile.html:19
-msgid "Change password"
-msgstr "Сменить пароль"
-
-#: .\templates\users\password_change_form.html:13
-msgid "Update password"
-msgstr "Обновить пароль"
-
-#: .\templates\users\password_change_form.html:15
-msgid "Back to profile"
-msgstr "Назад в профиль"
-
-#: .\templates\users\password_reset_complete.html:4
-msgid "Password reset complete"
-msgstr "Сброс пароля завершен"
-
-#: .\templates\users\password_reset_complete.html:9
-msgid "Password updated"
-msgstr "Пароль обновлен"
-
-#: .\templates\users\password_reset_complete.html:10
-msgid "Your password has been set. You can sign in now."
-msgstr "Ваш пароль установлен. Теперь можно войти."
-
-#: .\templates\users\password_reset_confirm.html:4
-#: .\templates\users\password_reset_confirm.html:9
-msgid "Set new password"
-msgstr "Установить новый пароль"
-
-#: .\templates\users\password_reset_confirm.html:14
-msgid "Save new password"
-msgstr "Сохранить новый пароль"
-
-#: .\templates\users\password_reset_confirm.html:17
-msgid "This reset link is invalid or already used."
-msgstr "Эта ссылка недействительна или уже использована."
-
-#: .\templates\users\password_reset_confirm.html:19
-#: .\templates\users\password_reset_done.html:11
-#: .\templates\users\password_reset_form.html:16
-msgid "Back to login"
-msgstr "Назад ко входу"
-
-#: .\templates\users\password_reset_done.html:4
-#: .\templates\users\password_reset_done.html:9
-msgid "Reset email sent"
-msgstr "Письмо отправлено"
-
-#: .\templates\users\password_reset_done.html:10
-msgid "If this email exists, reset instructions have been sent."
-msgstr "Если такой email существует, инструкции по сбросу уже отправлены."
-
-#: .\templates\users\password_reset_email.html:2
-msgid "You requested a password reset for your account."
-msgstr "Вы запросили сброс пароля для вашего аккаунта."
-
-#: .\templates\users\password_reset_email.html:3
-msgid "Please open this link:"
-msgstr "Перейдите по этой ссылке:"
-
-#: .\templates\users\password_reset_form.html:4
-#: .\templates\users\password_reset_form.html:9
-msgid "Reset password"
-msgstr "Сброс пароля"
-
-#: .\templates\users\password_reset_form.html:10
-msgid "Enter your account email, and we will send reset instructions."
-msgstr "Введите email аккаунта, и мы отправим инструкции по сбросу."
-
-#: .\templates\users\password_reset_form.html:14
-msgid "Send reset link"
-msgstr "Отправить ссылку для сброса"
-
-#: .\templates\users\password_reset_subject.txt:1
-msgid "Password reset instructions"
-msgstr "Инструкции по сбросу пароля"
-
-#: .\templates\users\profile.html:9
-msgid "not specified"
-msgstr "не указано"
-
-#: .\templates\users\profile.html:13
-msgid "Email"
-msgstr "Email"
-
-#: .\templates\users\profile.html:14
-msgid "First name"
-msgstr "Имя"
-
-#: .\templates\users\profile.html:15
-msgid "Last name"
-msgstr "Фамилия"
-
-#: .\templates\users\profile.html:16
-msgid "Birthday"
-msgstr "Дата рождения"
-
-#: .\templates\users\profile.html:23
-msgid "Logout"
-msgstr "Выйти"
-
-#: .\templates\users\signup.html:9
 msgid "Create account"
 msgstr "Создать аккаунт"
 
-#: .\templates\users\signup.html:13
+msgid "A few details and your account is ready."
+msgstr "Пара деталей — и аккаунт готов."
+
 msgid "Register"
 msgstr "Зарегистрироваться"
 
-#: .\templates\users\signup.html:16
 msgid "Already have an account?"
 msgstr "Уже есть аккаунт?"
+
+msgid "Reset password"
+msgstr "Сброс пароля"
+
+msgid "Reset your password calmly"
+msgstr "Спокойно восстановите пароль"
+
+msgid "Enter the email connected to your account and we will send a secure link to continue."
+msgstr "Введите email, связанный с аккаунтом, и мы отправим безопасную ссылку для продолжения."
+
+msgid "We will email instructions if the address exists in the system."
+msgstr "Мы отправим инструкции на почту, если такой адрес есть в системе."
+
+msgid "Send reset link"
+msgstr "Отправить ссылку для сброса"
+
+msgid "Back to login"
+msgstr "Назад ко входу"
+
+msgid "Reset email sent"
+msgstr "Письмо отправлено"
+
+msgid "Check your inbox"
+msgstr "Проверьте входящие"
+
+msgid "If an account with that email exists, the reset instructions are already on the way."
+msgstr "Если аккаунт с таким email существует, инструкции по сбросу уже отправлены."
+
+msgid "Open the message and follow the secure link to choose a new password."
+msgstr "Откройте письмо и перейдите по безопасной ссылке, чтобы задать новый пароль."
+
+msgid "Did not receive anything? Check spam or try again with the email used during registration."
+msgstr "Ничего не пришло? Проверьте спам или попробуйте снова с email, указанным при регистрации."
+
+msgid "Send again"
+msgstr "Отправить снова"
+
+msgid "Set new password"
+msgstr "Установить новый пароль"
+
+msgid "Choose a fresh password"
+msgstr "Придумайте новый пароль"
+
+msgid "A strong new password will get you back into your profile in a moment."
+msgstr "Надежный новый пароль быстро вернет вас в профиль."
+
+msgid "Use a password you do not reuse elsewhere."
+msgstr "Используйте пароль, который не повторяется на других сайтах."
+
+msgid "Save new password"
+msgstr "Сохранить новый пароль"
+
+msgid "This reset link is invalid or already used."
+msgstr "Эта ссылка недействительна или уже была использована."
+
+msgid "Password reset complete"
+msgstr "Сброс пароля завершен"
+
+msgid "Your password is updated"
+msgstr "Ваш пароль обновлен"
+
+msgid "Everything is ready. You can sign in again and continue cooking."
+msgstr "Все готово. Можно снова войти и продолжить."
+
+msgid "Password updated"
+msgstr "Пароль обновлен"
+
+msgid "The new password has been saved successfully."
+msgstr "Новый пароль успешно сохранен."
+
+msgid "Change password"
+msgstr "Сменить пароль"
+
+msgid "Update your account security"
+msgstr "Обновите безопасность аккаунта"
+
+msgid "Change your password anytime to keep your account protected and easy to trust."
+msgstr "Меняйте пароль в любой момент, чтобы аккаунт оставался защищенным."
+
+msgid "Enter the current password first, then choose a new one."
+msgstr "Сначала введите текущий пароль, затем задайте новый."
+
+msgid "Update password"
+msgstr "Обновить пароль"
+
+msgid "Password changed"
+msgstr "Пароль изменен"
+
+msgid "Password changed successfully"
+msgstr "Пароль успешно изменен"
+
+msgid "Your account has been updated and is ready to use with the new password."
+msgstr "Аккаунт обновлен и готов к работе с новым паролем."
+
+msgid "Password was changed"
+msgstr "Пароль был изменен"
+
+msgid "You can return to your profile now."
+msgstr "Теперь можно вернуться в профиль."
+
+msgid "Go to profile"
+msgstr "Перейти в профиль"
+
+msgid "Add photo"
+msgstr "Добавить фото"
+
+msgid "Profile settings"
+msgstr "Настройки профиля"
+
+msgid "Back"
+msgstr "Вернуться назад"
+
+msgid "Birthday"
+msgstr "Дата рождения"
+
+msgid "Email"
+msgstr "Почта"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Logout"
+msgstr "Выйти"
+
+msgid "Username or email"
+msgstr "Имя пользователя или email"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "chef or chef@example.com"
+msgstr "chef или chef@example.com"
+
+msgid "Enter your password"
+msgstr "Введите пароль"
+
+msgid "Choose a username"
+msgstr "Придумайте имя пользователя"
+
+msgid "chef@example.com"
+msgstr "chef@example.com"
+
+msgid "Your first name"
+msgstr "Ваше имя"
+
+msgid "Your last name"
+msgstr "Ваша фамилия"
+
+msgid "Create a strong password"
+msgstr "Создайте надежный пароль"
+
+msgid "Repeat the password"
+msgstr "Повторите пароль"
+
+msgid "A user with this email already exists."
+msgstr "Пользователь с таким email уже существует."
+
+msgid "chefmaster"
+msgstr "chefmaster"
+
+msgid "Anna"
+msgstr "Анна"
+
+msgid "Ivanova"
+msgstr "Иванова"
+
+msgid "A user with this username already exists."
+msgstr "Пользователь с таким именем уже существует."
+
+msgid "Birthday cannot be in the future."
+msgstr "Дата рождения не может быть в будущем."
+
+msgid "Please enter a realistic date of birth."
+msgstr "Укажите реалистичную дату рождения."
+
+msgid "Profile updated successfully."
+msgstr "Профиль успешно обновлен."

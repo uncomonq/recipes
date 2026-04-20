@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load form_tags %}
+
+{% block title %}{% trans "Profile settings" %}{% endblock %}
+
+{% block content %}
+<section class="rh-page rh-profile-settings-page">
+  <div class="container rh-shell">
+    <div class="rh-settings-back-wrap">
+      <a href="{% url 'users:profile' %}" class="rh-settings-back">
+        &larr; {% trans "Back" %}
+      </a>
+    </div>
+
+    <div class="rh-settings-layout">
+      <div class="rh-settings-heading">
+        <h1 class="rh-settings-title">{% trans "Profile settings" %}</h1>
+      </div>
+
+      <form method="post" class="rh-settings-form" novalidate>
+        {% csrf_token %}
+
+        <div class="rh-settings-card">
+          <div class="rh-settings-card-main">
+            <h2 class="rh-settings-card-name">{{ request.user.get_full_name|default:request.user.username }}</h2>
+            <p class="rh-settings-card-subtitle">@{{ request.user.username }}</p>
+          </div>
+
+          <div class="rh-settings-grid">
+            <div class="rh-settings-item">
+              <span class="rh-settings-label">{% trans "Login" %}</span>
+              {{ user_form.username }}
+              {% if user_form.username.errors %}
+                <div class="text-danger small mt-2">{{ user_form.username.errors }}</div>
+              {% endif %}
+            </div>
+
+            <div class="rh-settings-item">
+              <span class="rh-settings-label">{% trans "Birthday" %}</span>
+              {{ profile_form.birthday }}
+              {% if profile_form.birthday.errors %}
+                <div class="text-danger small mt-2">{{ profile_form.birthday.errors }}</div>
+              {% endif %}
+            </div>
+
+            <div class="rh-settings-item rh-settings-item--full">
+              <span class="rh-settings-label">{% trans "Email" %}</span>
+              {{ user_form.email }}
+              {% if user_form.email.errors %}
+                <div class="text-danger small mt-2">{{ user_form.email.errors }}</div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="rh-settings-actions">
+          <button type="submit" class="btn btn-warning text-white rh-settings-save">{% trans "Save" %}</button>
+        </div>
+      </form>
+
+      <form method="post" action="{% url 'users:logout' %}" class="rh-settings-logout-form">
+        {% csrf_token %}
+        <button type="submit" class="rh-settings-logout">{% trans "Logout" %}</button>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
