@@ -1,19 +1,17 @@
-{% load i18n %}
+﻿{% load i18n %}
 {% get_current_language as current_language %}
 <header class="navbar navbar-light bg-white border-bottom py-3">
   <div class="container d-flex justify-content-between align-items-center gap-3">
-    <a class="navbar-brand fw-bold text-warning mb-0" href="{% if request.user.is_authenticated %}{% url 'users:profile' %}{% else %}{% url 'users:login' %}{% endif %}">
+    <a class="navbar-brand fw-bold text-warning mb-0" href="{">
       RecipesHub
     </a>
     <div class="d-flex align-items-center gap-2">
-      {% if not request.user.is_authenticated %}
-        <a href="{% url 'users:login' %}" class="btn btn-outline-secondary">
-          {% trans "Sign in" %}
-        </a>
-        <a href="{% url 'users:signup' %}" class="btn btn-warning text-white">
-          {% trans "Sign up" %}
-        </a>
-      {% endif %}
+      <a href="#" class="btn btn-outline-secondary">
+        {% if current_language == "ru" %}Войти{% else %}Sign In{% endif %}
+      </a>
+      <a href="#" class="btn btn-warning text-white">
+        {% if current_language == "ru" %}Регистрация{% else %}Sign Up{% endif %}
+      </a>
       <form action="{% url 'set_language' %}" method="post" class="m-0">
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ request.get_full_path }}">
@@ -24,10 +22,10 @@
           aria-label="{% translate 'Language switcher' %}"
         >
           <option value="en" {% if current_language == "en" %}selected{% endif %}>
-            {% trans "English" %}
+            English
           </option>
           <option value="ru" {% if current_language == "ru" %}selected{% endif %}>
-            {% trans "Russian" %}
+            Русский
           </option>
         </select>
       </form>

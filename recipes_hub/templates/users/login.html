@@ -20,8 +20,8 @@
     <button type="submit" class="btn btn-warning text-white w-100 mt-4 rh-btn-main">{% trans "Sign in" %}</button>
   </form>
   <div class="rh-inline-links mt-4">
-    <a href="{% url 'users:password_reset' %}">{% trans "Forgot password?" %}</a>
+    <a href="{% url 'users:password_reset' %}" class="text-decoration-none">{% trans "Forgot password?" %}</a>
     <span class="text-muted">{% trans "No account yet?" %}</span>
-    <a href="{% url 'users:signup' %}">{% trans "Create one" %}</a>
+    <a href="{% url 'users:signup' %}" class="text-decoration-none">{% trans "Create one" %}</a>
   </div>
 {% endblock %}
