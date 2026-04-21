@@ -4,8 +4,7 @@ from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.utils.translation import gettext as _
 
-from users.forms import AvatarForm, ProfileForm, SignUpForm, UserSettingsForm
-from users.models import Profile
+from users.forms import ProfileForm, SignUpForm, UserSettingsForm
 
 
 def signup_view(request):
@@ -17,6 +16,7 @@ def signup_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
+            messages.success(request, _("Account created successfully."))
             return redirect("users:profile")
     else:
         form = SignUpForm()
@@ -26,44 +26,39 @@ def signup_view(request):
 
 @login_required
 def profile_view(request):
-    profile, created = Profile.objects.get_or_create(user=request.user)
-    if request.method == "POST":
-        avatar_form = AvatarForm(request.POST, request.FILES, instance=profile)
-        if avatar_form.is_valid():
-            avatar_form.save()
-            messages.success(request, _("Profile updated successfully."))
-            return redirect("users:profile")
-
     return render(
         request,
         "users/profile.html",
         {
-            "profile": profile,
-            "avatar_form": AvatarForm(instance=profile),
+            "profile": request.user.profile,
         },
     )
 
 
 @login_required
 def profile_settings_view(request):
-    profile, created = Profile.objects.get_or_create(user=request.user)
+    user = request.user
+    profile = user.profile
+
     if request.method == "POST":
-        user_form = UserSettingsForm(request.POST, instance=request.user)
-        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        user_form = UserSettingsForm(request.POST, instance=user)
+        profile_form = ProfileForm(
+            request.POST, request.FILES, instance=profile
+        )
+
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
             messages.success(request, _("Profile updated successfully."))
-            return redirect("users:profile_settings")
+            return redirect("users:profile")
     else:
-        user_form = UserSettingsForm(instance=request.user)
+        user_form = UserSettingsForm(instance=user)
         profile_form = ProfileForm(instance=profile)
 
     return render(
         request,
         "users/profile_settings.html",
         {
-            "profile": profile,
             "user_form": user_form,
             "profile_form": profile_form,
         },

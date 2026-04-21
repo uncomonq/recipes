@@ -7,7 +7,6 @@ from django.contrib.auth.forms import (
     PasswordResetForm,
     UserCreationForm,
 )
-from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
 from users.models import Profile
@@ -64,7 +63,7 @@ class SignUpForm(StyledFieldsMixin, UserCreationForm):
     last_name = forms.CharField(required=False)
 
     class Meta(UserCreationForm.Meta):
-        model = User
+        model = UserModel
         fields = ("username", "email", "first_name", "last_name")
 
     def __init__(self, *args, **kwargs):
@@ -78,30 +77,25 @@ class SignUpForm(StyledFieldsMixin, UserCreationForm):
             "password2": _("Repeat the password"),
         }
         for name, placeholder in placeholders.items():
-            self.fields[name].widget.attrs.setdefault("placeholder", placeholder)
+            self.fields[name].widget.attrs.setdefault(
+                "placeholder", placeholder
+            )
 
     def clean_email(self):
         email = self.cleaned_data["email"].strip().lower()
         if UserModel.objects.filter(email__iexact=email).exists():
-            raise forms.ValidationError(_("A user with this email already exists."))
+            raise forms.ValidationError(
+                _("A user with this email already exists.")
+            )
         return email
-
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.email = self.cleaned_data["email"]
-        user.first_name = self.cleaned_data["first_name"]
-        user.last_name = self.cleaned_data["last_name"]
-
-        if commit:
-            user.save()
-
-        return user
 
 
 class PasswordResetRequestForm(StyledFieldsMixin, PasswordResetForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["email"].widget.attrs.setdefault("placeholder", _("chef@example.com"))
+        self.fields["email"].widget.attrs.setdefault(
+            "placeholder", _("chef@example.com")
+        )
 
 
 class UserProfileForm(StyledFieldsMixin, forms.ModelForm):
@@ -112,10 +106,18 @@ class UserProfileForm(StyledFieldsMixin, forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.user = kwargs.get("instance")
         super().__init__(*args, **kwargs)
-        self.fields["username"].widget.attrs.setdefault("placeholder", _("chefmaster"))
-        self.fields["email"].widget.attrs.setdefault("placeholder", _("chef@example.com"))
-        self.fields["first_name"].widget.attrs.setdefault("placeholder", _("Anna"))
-        self.fields["last_name"].widget.attrs.setdefault("placeholder", _("Ivanova"))
+        self.fields["username"].widget.attrs.setdefault(
+            "placeholder", _("chefmaster")
+        )
+        self.fields["email"].widget.attrs.setdefault(
+            "placeholder", _("chef@example.com")
+        )
+        self.fields["first_name"].widget.attrs.setdefault(
+            "placeholder", _("Anna")
+        )
+        self.fields["last_name"].widget.attrs.setdefault(
+            "placeholder", _("Ivanova")
+        )
 
     def clean_email(self):
         email = self.cleaned_data["email"].strip().lower()
@@ -123,7 +125,9 @@ class UserProfileForm(StyledFieldsMixin, forms.ModelForm):
         if self.instance.pk:
             queryset = queryset.exclude(pk=self.instance.pk)
         if queryset.exists():
-            raise forms.ValidationError(_("A user with this email already exists."))
+            raise forms.ValidationError(
+                _("A user with this email already exists.")
+            )
         return email
 
     def clean_username(self):
@@ -132,7 +136,9 @@ class UserProfileForm(StyledFieldsMixin, forms.ModelForm):
         if self.instance.pk:
             queryset = queryset.exclude(pk=self.instance.pk)
         if queryset.exists():
-            raise forms.ValidationError(_("A user with this username already exists."))
+            raise forms.ValidationError(
+                _("A user with this username already exists.")
+            )
         return username
 
 
@@ -141,18 +147,15 @@ class UserSettingsForm(StyledFieldsMixin, forms.ModelForm):
         model = UserModel
         fields = ("username", "email")
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields["username"].widget.attrs.setdefault("placeholder", _("chefmaster"))
-        self.fields["email"].widget.attrs.setdefault("placeholder", _("chef@example.com"))
-
     def clean_email(self):
         email = self.cleaned_data["email"].strip().lower()
         queryset = UserModel.objects.filter(email__iexact=email)
         if self.instance.pk:
             queryset = queryset.exclude(pk=self.instance.pk)
         if queryset.exists():
-            raise forms.ValidationError(_("A user with this email already exists."))
+            raise forms.ValidationError(
+                _("A user with this email already exists.")
+            )
         return email
 
     def clean_username(self):
@@ -161,7 +164,9 @@ class UserSettingsForm(StyledFieldsMixin, forms.ModelForm):
         if self.instance.pk:
             queryset = queryset.exclude(pk=self.instance.pk)
         if queryset.exists():
-            raise forms.ValidationError(_("A user with this username already exists."))
+            raise forms.ValidationError(
+                _("A user with this username already exists.")
+            )
         return username
 
 

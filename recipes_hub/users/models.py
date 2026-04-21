@@ -30,3 +30,21 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"Profile for {self.user.username}"
+
+    @property
+    def get_age(self):
+        if not self.birthday:
+            return None
+        from datetime import date
+
+        today = date.today()
+        try:
+            age = today.year - self.birthday.year
+            if (today.month, today.day) < (
+                self.birthday.month,
+                self.birthday.day,
+            ):
+                age -= 1
+            return age
+        except ValueError:
+            return None

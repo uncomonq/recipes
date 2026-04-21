@@ -11,10 +11,18 @@ class EmailOrUsernameBackend(ModelBackend):
 
         user_model = get_user_model()
         lookup_value = username.strip()
-        user = (
-            user_model.objects.filter(email__iexact=lookup_value).first()
-            or user_model.objects.filter(username__iexact=lookup_value).first()
-        )
-        if user and user.check_password(password) and self.user_can_authenticate(user):
+
+        try:
+            user = user_model.objects.get(email__iexact=lookup_value)
+        except user_model.DoesNotExist:
+            user = user_model.objects.filter(
+                username__iexact=lookup_value
+            ).first()
+
+        if (
+            user
+            and user.check_password(password)
+            and self.user_can_authenticate(user)
+        ):
             return user
         return None

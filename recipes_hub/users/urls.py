@@ -2,7 +2,10 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 from django.urls import reverse_lazy
 
-from users.forms import EmailOrUsernameAuthenticationForm, PasswordResetRequestForm
+from users.forms import (
+    EmailOrUsernameAuthenticationForm,
+    PasswordResetRequestForm,
+)
 from users.views import profile_settings_view, profile_view, signup_view
 
 app_name = "users"
